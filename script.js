@@ -135,9 +135,12 @@ function initSkillBars() {
     });
 }
 
-// Contact form functionality
+// Contact form functionality with EmailJS
 function initContactForm() {
-    const form = document.querySelector('.contact-form form');
+    // Initialize EmailJS with your public key
+    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    
+    const form = document.getElementById('contact-form');
     
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -145,8 +148,8 @@ function initContactForm() {
             
             // Get form data
             const formData = new FormData(form);
-            const name = formData.get('name');
-            const email = formData.get('email');
+            const name = formData.get('from_name');
+            const email = formData.get('from_email');
             const subject = formData.get('subject');
             const message = formData.get('message');
             
@@ -167,34 +170,32 @@ function initContactForm() {
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Submit to Formspree
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
+            // EmailJS template parameters
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                to_email: 'tharindu2003hs@gmail.com' // Your email address
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
                     showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                     form.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
-    emailjs.send("service_pbapudv","template_fjib3lc",parms).then(alert("Email Sent!!"))
 }
 
 // Email validation
