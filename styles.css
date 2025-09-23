@@ -1068,7 +1068,7 @@ body {
     }
     
     .greeting {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     
     .highlight {
@@ -1124,7 +1124,7 @@ body {
     }
     
     .greeting {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
     
     .highlight {
@@ -1151,6 +1151,20 @@ body {
 
     .contact-form {
         padding: 1.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .greeting {
+        font-size: 1.1rem !important;
+    }
+    
+    .highlight {
+        font-size: 1.8rem !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
     }
 }
 
