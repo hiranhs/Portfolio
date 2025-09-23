@@ -189,6 +189,8 @@ body {
     margin-bottom: 1rem;
     line-height: 1.2;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .greeting {
@@ -209,6 +211,8 @@ body {
     position: relative;
     text-shadow: none !important;
     animation: none !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 
@@ -1188,6 +1192,47 @@ body {
     .hero-buttons .btn {
         max-width: 250px;
         padding: 12px 20px;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .hero-content {
+        padding: 0 0.5rem;
+    }
+    
+    .greeting {
+        font-size: 0.9rem !important;
+    }
+    
+    .highlight {
+        font-size: 1.4rem !important;
+        line-height: 1.1;
+        word-break: break-word;
+    }
+    
+    .hero-title {
+        font-size: 1.4rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .profile-img-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-buttons .btn {
+        max-width: 220px;
+        padding: 10px 15px;
+        font-size: 0.8rem;
     }
 }
 

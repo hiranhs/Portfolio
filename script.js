@@ -194,6 +194,7 @@ function initContactForm() {
             });
         });
     }
+    emailjs.send("service_pbapudv","template_fjib3lc",parms).then(alert("Email Sent!!"))
 }
 
 // Email validation
