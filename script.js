@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSkillBars();
     initContactForm();
     initLoadingScreen();
-    initTypingEffect();
+    // initTypingEffect(); // Disabled to prevent form interference
 });
 
 // Navigation functionality
