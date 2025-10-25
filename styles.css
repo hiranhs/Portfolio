@@ -1160,6 +1160,12 @@ body {
         overflow-wrap: break-word;
         word-wrap: break-word;
     }
+
+    .hero-description {
+        overflow-wrap: break-word;
+        word-wrap: break-word; /* Fallback for older browsers */
+    }
+
     
     .greeting {
         font-size: 1.3rem;
