@@ -1163,6 +1163,14 @@ body {
         font-size: 1.3rem;
     }
     
+    /* Add this one rule inside your @media (max-width: 768px) block */
+
+    .profile-img-container {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto; /* This centers the image */
+    }
+
     .highlight {
         font-size: 2.5rem;
     }
