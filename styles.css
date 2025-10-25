@@ -1184,11 +1184,14 @@ body {
     }
 
     .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-        padding: 0 1rem;
-    }
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+    padding: 0 1rem;
+    /* FIX: Ensure the grid spans the full width of the viewport */
+    width: 100%; 
+    max-width: 100%;
+}
 
     .about-content {
         max-width: 100%;
