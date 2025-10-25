@@ -1155,6 +1155,17 @@ body {
         margin: 1rem 0;
     }
 
+    .hero-text-container { /* Use the class name for the wrapper around your title/subtitle/description */
+        max-width: 100%;
+        margin: 0 auto; /* Center it */
+    }
+
+    .hero-subtitle { /* This is the element containing the '3rd-year Computer Science...' text */
+        max-width: 100%;
+        padding: 0 1rem; /* Use padding to prevent text from touching screen edges */
+        box-sizing: border-box; /* Include padding in the width calculation */
+}
+
     .hero-title {
         font-size: 2.5rem;
         overflow-wrap: break-word;
