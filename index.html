@@ -459,10 +459,11 @@
                 </div>
 
                 <div class="contact-form">
-                    <form id="contact-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
                         <div class="form-group">
                             <input type="text" id="name" name="from_name" placeholder="Your Name" required>
                         </div>
+                        <input type="hidden" name="access_key" value="0cb385f2-93a7-4048-8c77-9b0fa44c8b41">
                         <div class="form-group">
                             <input type="email" id="email" name="from_email" placeholder="Your Email" required>
                         </div>
