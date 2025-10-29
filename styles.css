@@ -931,6 +931,155 @@ body {
             }
         }
 
+/* ==================================
+   DESIGNS GALLERY SECTION
+=================================== */
+
+/* ==================================
+   DESIGNS GALLERY SECTION (FIXED FOR ASPECT RATIOS)
+=================================== */
+
+.designs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax slightly */
+  gap: 2rem;
+}
+
+.design-card {
+  position: relative; /* Needed for absolute positioning of inner elements */
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+  /* REMOVE THE OLD aspect-ratio: 4 / 3; IF YOU HAD IT HERE */
+  /* This creates a placeholder space that respects aspect ratio */
+  /* For 4:3 ratio: 75% (height is 75% of width) */
+  /* For 16:9 ratio: 56.25% */
+  /* For square 1:1 ratio: 100% */
+  /* Using 75% as a common design gallery ratio, adjust if most of your designs are square (100%) or cinematic (56.25%) */
+}
+
+/* Aspect Ratio Box Hack: Creates a responsive box that maintains its aspect ratio */
+.design-card::before {
+    content: '';
+    display: block;
+    padding-top: 75%; /* Sets height to 75% of its width (4:3 aspect ratio) */
+    /* If your designs are mostly square, use padding-top: 100%; */
+    /* If your designs are mostly 16:9, use padding-top: 56.25%; */
+}
+
+.design-card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* This shows the full image, no cropping */
+  display: block;
+  transition: transform 0.3s ease;
+  
+  /* Optional: Add a background color to fill the empty space */
+  /* This color matches your project card background */
+  background-color: #1a1a2e; 
+}
+
+.design-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 53, 0.2);
+  border-color: rgba(255, 107, 53, 0.4);
+}
+
+.design-card:hover img {
+  transform: scale(1.1);
+}
+
+.design-overlay {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(79, 70, 229, 0.8);
+  display: none; /* <-- ADD THIS LINE to completely hide it */
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1; 
+}
+
+.design-card:hover .design-overlay {
+  opacity: 1;
+}
+
+.design-overlay i {
+  font-size: 2.5rem;
+  color: white;
+}
+
+/* (Rest of your CSS for lightbox and other sections remains the same) */
+
+/* ==================================
+   LIGHTBOX STYLES
+=================================== */
+
+.lightbox {
+  position: fixed;
+  z-index: 10001; /* Higher than navbar (1000) */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.1);
+  color: #ff6b35; /* Use your highlight color */
+}
+
+/* Lightbox Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* Skills Section */
 .skills {
     padding: 100px 0;
