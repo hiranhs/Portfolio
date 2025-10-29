@@ -727,6 +727,48 @@ body {
         }
 
         /* ==================================
+         MINIMAL STYLES FOR STANDALONE PREVIEW
+         (Copied from your main file)
+         ==================================
+        */
+        :root {
+            --primary-color: #ff6b35; /* Bright Orange/Coral */
+            --secondary-color: #4f46e5; /* Deep Indigo/Blue */
+            --background-dark: #1a1a2e; /* Dark Purple/Black */
+            --text-light: #f4f4f4;
+            --card-bg: #21213e; /* Slightly lighter card background */
+            --skill-bg: rgba(79, 70, 229, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 4rem;
+            color: var(--text-light);
+        }
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        /* ==================================
          RELEVANT CSS FOR DESIGN WORK SECTION
          ==================================
         */
@@ -888,8 +930,6 @@ body {
                 font-size: 0.9rem;
             }
         }
-
-
 
 /* Skills Section */
 .skills {
