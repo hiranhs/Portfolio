@@ -8,6 +8,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -222,58 +223,82 @@
         </div>
     </section>
 
-    <section id="designs" class="projects"> <div class="container">
-    <h2 class="section-title">My Designs</h2>
-    <p class="section-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: -1.5rem; margin-bottom: 3rem;">
-      A collection of my work created with Photoshop.
-    </p>
+    <!-- 
+      ==================================
+      RELEVANT HTML FOR DESIGN WORK SECTION
+      ==================================
+    -->
+    <main>
+        <!-- DESIGN WORK SECTION (Projects/Designs) -->
+        <section id="designs">
+            <div class="container">
+                <h2 class="section-title">Selected <span>Design Work</span></h2>
 
-    <div class="designs-grid">
-      
-      <div class="design-card">
-        <img src="1.png" alt="Photoshop Design 1">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i> </div>
-      </div>
-      
-      <div class="design-card">
-        <img src="2.png" alt="Photoshop Design 2">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      
-      <div class="design-card">
-        <img src="3.png" alt="Photoshop Design 3">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                <!-- Design Filters (New Categories) -->
+                <div class="design-filters">
+                    <button class="filter-btn active" data-filter="all">All Work</button>
+                    <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
+                    <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+                    <button class="filter-btn" data-filter="video-editing">Video Editing</button>
+                </div>
 
-      <div class="design-card">
-        <img src="4.png" alt="Photoshop Design 4">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                <div class="designs-grid">
+                    
+                    <!-- Design Card 1: UI/UX -->
+                    <div class="design-card ui-ux" data-full-img="https://placehold.co/800x600/4F46E5/FFF?text=Mobile+App+UI/UX+Case+Study" data-caption="A mobile app UI/UX redesign focusing on accessibility and user flow.">
+                        <img src="https://placehold.co/400x300/4F46E5/FFF?text=UI/UX+Case+Study" alt="UI/UX Case Study Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Mobile App UI/UX</div>
+                    </div>
 
-      <div class="design-card">
-        <img src="5.png" alt="Photoshop Design 5">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                    <!-- Design Card 2: Video Editing (Premiere Pro) -->
+                    <div class="design-card video-editing" data-full-img="https://placehold.co/800x450/FF6B35/FFF?text=Promotional+Video+Edit" data-caption="Short promotional video edited using Adobe Premiere Pro for social media.">
+                        <img src="https://placehold.co/400x300/FF6B35/FFF?text=Video+Editing+Demo" alt="Video Editing Demo Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Premiere Pro Edit</div>
+                    </div>
 
-      <div class="design-card">
-        <img src="6.png" alt="Photoshop Design 6">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
+                    <!-- Design Card 3: Graphic Design (Illustrator) -->
+                    <div class="design-card graphic-design" data-full-img="https://placehold.co/700x700/21213E/FF6B35?text=Brand+Identity+Design" data-caption="Logos and full brand style guide designed in Adobe Illustrator.">
+                        <img src="https://placehold.co/400x300/21213E/FF6B35?text=Brand+Identity" alt="Brand Identity Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Illustrator Branding</div>
+                    </div>
+                    
+                    <!-- Design Card 4: Graphic Design (Photoshop) -->
+                    <div class="design-card graphic-design" data-full-img="https://placehold.co/800x600/4F46E5/FFF?text=Advanced+Photo+Manipulation" data-caption="Advanced photo composite and manipulation created with Adobe Photoshop.">
+                        <img src="https://placehold.co/400x300/4F46E5/FFF?text=Photo+Manipulation" alt="Photo Manipulation Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Photoshop Composite</div>
+                    </div>
+
+                    <!-- Design Card 5: UI/UX (Figma) -->
+                    <div class="design-card ui-ux" data-full-img="https://placehold.co/800x600/FF6B35/1a1a2e?text=E-commerce+Wireframes" data-caption="Wireframes and high-fidelity mockups for an e-commerce platform using Figma.">
+                        <img src="https://placehold.co/400x300/FF6B35/1a1a2e?text=Website+Wireframes" alt="Website Wireframes Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Figma Wireframes</div>
+                    </div>
+
+                    <!-- Design Card 6: Video Editing (Motion Graphics) -->
+                    <div class="design-card video-editing" data-full-img="httpss://placehold.co/800x450/21213E/4F46E5?text=Motion+Graphics+Intro" data-caption="Motion graphics and typography animation for a video introduction using Premiere Pro.">
+                        <img src="https://placehold.co/400x300/21213E/4F46E5?text=Motion+Graphics+Intro" alt="Motion Graphics Intro Thumbnail">
+                        <div class="design-overlay"><i class="fas fa-search"></i></div>
+                        <div class="design-caption">Motion Graphics</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal (Required by the Design Section) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
-      </div>
-      
-      </div>
-  </div>
-</section>
+    </div>
 
     
 

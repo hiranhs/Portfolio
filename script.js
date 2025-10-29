@@ -551,3 +551,56 @@ const debouncedScrollHandler = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);
+
+
+// Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const designCards = document.querySelectorAll('.design-card');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        designCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const fullSrc = card.getAttribute('data-full-img');
+                const caption = card.getAttribute('data-caption');
+                
+                lightboxImg.src = fullSrc;
+                lightboxCaption.textContent = caption;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Design Filter Functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const allDesignCards = document.querySelectorAll('.design-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 1. Update button appearance
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                // 2. Filter the cards
+                allDesignCards.forEach(card => {
+                    // Show all cards or cards matching the filter class
+                    if (filterValue === 'all' || card.classList.contains(filterValue)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
