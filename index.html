@@ -8,6 +8,20 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- 
+      PERFORMANCE FIX: 
+      Replaced the standard <link rel="stylesheet"> with a non-blocking "preload" link.
+      This tells the browser to download the icon file *without* stopping
+      the rest of the page from rendering. It applies the styles once loaded.
+    -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Fallback for browsers that don't support preload or have JavaScript disabled -->
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -222,58 +236,77 @@
         </div>
     </section>
 
-    <section id="designs" class="projects"> <div class="container">
-    <h2 class="section-title">My Designs</h2>
-    <p class="section-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: -1.5rem; margin-bottom: 3rem;">
-      A collection of my work created with Photoshop.
-    </p>
+    <main>
+        <!-- DESIGN WORK SECTION (Projects/Designs) -->
+        <section id="designs">
+            <div class="container">
+                <h2 class="section-title">My <span>Designs</span></h2>
+                <p class="section-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.8); margin-top: -1.5rem; margin-bottom: 3rem;">
+                  A collection of my work created with Photoshop.
+                </p>
 
-    <div class="designs-grid">
-      
-      <div class="design-card">
-        <img src="1.png" alt="Photoshop Design 1">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i> </div>
-      </div>
-      
-      <div class="design-card">
-        <img src="2.png" alt="Photoshop Design 2">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
-      
-      <div class="design-card">
-        <img src="3.png" alt="Photoshop Design 3">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                <div class="designs-grid">
+                  
+                  <!-- Card 1 -->
+                  <div class="design-card" data-full-img="1.png" data-caption="Photoshop Design 1">
+                    <img src="1.png" alt="Photoshop Design 1">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i> </div>
+                  </div>
+                  
+                  <!-- Card 2 -->
+                  <div class="design-card" data-full-img="2.png" data-caption="Photoshop Design 2">
+                    <img src="2.png" alt="Photoshop Design 2">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                  </div>
+                  
+                  <!-- Card 3 -->
+                  <div class="design-card" data-full-img="3.png" data-caption="Photoshop Design 3">
+                    <img src="3.png" alt="Photoshop Design 3">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                  </div>
 
-      <div class="design-card">
-        <img src="4.png" alt="Photoshop Design 4">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                  <!-- Card 4 -->
+                  <div class="design-card" data-full-img="4.png" data-caption="Photoshop Design 4">
+                    <img src="4.png" alt="Photoshop Design 4">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                  </div>
 
-      <div class="design-card">
-        <img src="5.png" alt="Photoshop Design 5">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
-        </div>
-      </div>
+                  <!-- Card 5 -->
+                  <div class="design-card" data-full-img="5.png" data-caption="Photoshop Design 5">
+                    <img src="5.png" alt="Photoshop Design 5">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                  </div>
 
-      <div class="design-card">
-        <img src="6.png" alt="Photoshop Design 6">
-        <div class="design-overlay">
-          <i class="fas fa-search-plus"></i>
+                  <!-- Card 6 -->
+                  <div class="design-card" data-full-img="6.png" data-caption="Photoshop Design 6">
+                    <img src="6.png" alt="Photoshop Design 6">
+                    <div class="design-overlay">
+                      <i class="fas fa-search-plus"></i>
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox Modal (Required by the Design Section) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
-      </div>
-      
-      </div>
-  </div>
-</section>
+    </div>
 
     
 
