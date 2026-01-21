@@ -120,7 +120,8 @@ body {
         overflow: hidden;
         /* Restore hidden to clip background animations */
         height: auto;
-        min-height: 100vh;
+        min-height: 100dvh;
+        /* Use dynamic viewport height to prevent jumps */
         padding-top: 80px;
         padding-bottom: 50px;
     }
