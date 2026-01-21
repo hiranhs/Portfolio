@@ -348,6 +348,8 @@ body {
     image-rendering: auto;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    background-color: #ffffff;
+    /* Ensure white background covers gradients/gaps */
 }
 
 .profile-img-container:hover .profile-img {
