@@ -2097,24 +2097,36 @@ section {
     .creative-image-wrapper {
         height: 300px;
         margin-top: 1rem;
+        max-width: 100%;
+        /* Prevent overflow */
+        overflow: hidden;
+        /* Clip badge overflow */
     }
 
     .social-cards-container {
-        width: 200px;
+        width: 100%;
+        /* Flexible width */
+        max-width: 280px;
+        /* Constrain max width */
         height: 300px;
+        overflow: visible;
+        /* Allow overlapping cards but container is constrained */
     }
 
     .social-card {
         width: 180px;
         height: 260px;
+        /* Remove fixed width constraints that might cause issues */
     }
 
     .card-youtube {
-        left: -20px;
+        left: -10px;
+        /* Reduced offset */
     }
 
     .card-tiktok {
-        right: -20px;
+        right: -10px;
+        /* Reduced offset */
     }
 }
 
