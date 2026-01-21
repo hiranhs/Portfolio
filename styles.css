@@ -117,14 +117,18 @@ body {
 
 @media (max-width: 768px) {
     .hero {
-        overflow: visible;
-        /* Allow content to flow vertically on mobile */
+        overflow: hidden;
+        /* Restore hidden to clip background animations */
         height: auto;
         min-height: 100vh;
         padding-top: 80px;
-        /* Reduced from 100px */
-        /* Add padding for fixed navbar */
         padding-bottom: 50px;
+    }
+
+    .hero::before,
+    .hero::after {
+        animation: none;
+        /* Disable moving background on mobile for stability */
     }
 }
 
