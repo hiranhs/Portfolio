@@ -269,15 +269,25 @@ function initLoadingScreen() {
         loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
         document.body.appendChild(loadingScreen);
         
-        // Hide loading screen after page load
-        window.addEventListener('load', function() {
+        // Hide loading screen after DOM is ready (faster perception)
+        document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 loadingScreen.classList.add('hide');
                 setTimeout(() => {
                     loadingScreen.remove();
                 }, 500);
-            }, 1000);
+            }, 800); // Small delay to ensure smooth transition
         });
+        
+        // Fallback: If DOMContentLoaded already fired
+        if (document.readyState === 'interactive' || document.readyState === 'complete') {
+             setTimeout(() => {
+                loadingScreen.classList.add('hide');
+                setTimeout(() => {
+                    loadingScreen.remove();
+                }, 500);
+            }, 800);
+        }
     }
 }
 
