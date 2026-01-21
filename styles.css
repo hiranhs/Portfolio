@@ -116,7 +116,8 @@ body {
         /* Allow content to flow vertically on mobile */
         height: auto;
         min-height: 100vh;
-        padding-top: 100px;
+        padding-top: 80px;
+        /* Reduced from 100px */
         /* Add padding for fixed navbar */
         padding-bottom: 50px;
     }
@@ -1434,7 +1435,8 @@ section {
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 2rem;
+        gap: 1.5rem;
+        /* Reduced from 2rem */
         padding: 0 1rem;
         /* FIX: Ensure the grid spans the full width of the viewport */
         width: 100%;
@@ -1506,8 +1508,9 @@ section {
     }
 
     .profile-img-container {
-        width: 250px;
-        height: 250px;
+        width: 220px;
+        /* Reduced from 250px to fit better */
+        height: 220px;
         margin: 0 auto;
     }
 
