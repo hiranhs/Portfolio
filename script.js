@@ -1,11 +1,12 @@
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initNavigation();
     initScrollAnimations();
     initSkillBars();
     initContactForm();
     initLoadingScreen();
+    initLightbox();
     // initTypingEffect(); // Disabled to prevent form interference
 });
 
@@ -16,10 +17,10 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Mobile menu toggle
-    hamburger.addEventListener('click', function() {
+    hamburger.addEventListener('click', function () {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
-        
+
         // Animate hamburger bars
         const bars = hamburger.querySelectorAll('.bar');
         if (hamburger.classList.contains('active')) {
@@ -35,10 +36,10 @@ function initNavigation() {
 
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
-            
+
             // Reset hamburger bars
             const bars = hamburger.querySelectorAll('.bar');
             bars[0].style.transform = 'none';
@@ -48,7 +49,7 @@ function initNavigation() {
     });
 
     // Navbar scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 100) {
             navbar.style.background = 'rgba(255, 255, 255, 0.98)';
@@ -60,10 +61,10 @@ function initNavigation() {
     });
 
     // Active navigation link highlighting
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         let current = '';
         const sections = document.querySelectorAll('section');
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
@@ -88,7 +89,7 @@ function initScrollAnimations() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
@@ -104,11 +105,11 @@ function initScrollAnimations() {
     });
 
     // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
         const heroContent = document.querySelector('.hero-content');
-        
+
         if (hero && heroContent) {
             heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
@@ -118,8 +119,8 @@ function initScrollAnimations() {
 // Skill bars animation
 function initSkillBars() {
     const skillBars = document.querySelectorAll('.skill-progress');
-    
-    const skillObserver = new IntersectionObserver(function(entries) {
+
+    const skillObserver = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const skillBar = entry.target;
@@ -139,37 +140,37 @@ function initSkillBars() {
 function initContactForm() {
     // Initialize EmailJS with your public key
     emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-    
+
     const form = document.getElementById('contact-form');
-    
+
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(form);
             const name = formData.get('from_name');
             const email = formData.get('from_email');
             const subject = formData.get('subject');
             const message = formData.get('message');
-            
+
             // Simple validation
             if (!name || !email || !subject || !message) {
                 showNotification('Please fill in all fields', 'error');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 showNotification('Please enter a valid email address', 'error');
                 return;
             }
-            
+
             // Show loading state
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-            
+
             // EmailJS template parameters
             const templateParams = {
                 from_name: name,
@@ -178,14 +179,14 @@ function initContactForm() {
                 message: message,
                 to_email: 'tharindu2003hs@gmail.com' // Your email address
             };
-            
+
             // Send email using EmailJS
             emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function(response) {
+                .then(function (response) {
                     console.log('SUCCESS!', response.status, response.text);
                     showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
                     form.reset();
-                }, function(error) {
+                }, function (error) {
                     console.log('FAILED...', error);
                     showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
                 })
@@ -209,7 +210,7 @@ function showNotification(message, type = 'info') {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
-    
+
     // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
@@ -219,7 +220,7 @@ function showNotification(message, type = 'info') {
             <button class="notification-close">&times;</button>
         </div>
     `;
-    
+
     // Add styles
     notification.style.cssText = `
         position: fixed;
@@ -236,21 +237,21 @@ function showNotification(message, type = 'info') {
         max-width: 400px;
         font-family: 'Poppins', sans-serif;
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     // Animate in
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Close button functionality
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     });
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         if (notification.parentNode) {
@@ -268,9 +269,9 @@ function initLoadingScreen() {
         loadingScreen.className = 'loading';
         loadingScreen.innerHTML = '<div class="loading-spinner"></div>';
         document.body.appendChild(loadingScreen);
-        
+
         // Hide loading screen after DOM is ready (faster perception)
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => {
                 loadingScreen.classList.add('hide');
                 setTimeout(() => {
@@ -278,10 +279,10 @@ function initLoadingScreen() {
                 }, 500);
             }, 800); // Small delay to ensure smooth transition
         });
-        
+
         // Fallback: If DOMContentLoaded already fired
         if (document.readyState === 'interactive' || document.readyState === 'complete') {
-             setTimeout(() => {
+            setTimeout(() => {
                 loadingScreen.classList.add('hide');
                 setTimeout(() => {
                     loadingScreen.remove();
@@ -295,11 +296,11 @@ function initLoadingScreen() {
 function initTypingEffect() {
     const heroTitle = document.querySelector('.hero-title');
     if (!heroTitle) return;
-    
+
     const text = heroTitle.textContent;
     heroTitle.textContent = '';
     heroTitle.style.borderRight = '2px solid #fbbf24';
-    
+
     let i = 0;
     const typeWriter = () => {
         if (i < text.length) {
@@ -312,7 +313,7 @@ function initTypingEffect() {
             }, 1000);
         }
     };
-    
+
     // Start typing effect after a short delay
     setTimeout(typeWriter, 500);
 }
@@ -334,22 +335,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Project card hover effects
 document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-10px) scale(1.02)';
     });
-    
-    card.addEventListener('mouseleave', function() {
+
+    card.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
 
 // Skill tag hover effects
 document.querySelectorAll('.skill-tag').forEach(tag => {
-    tag.addEventListener('mouseenter', function() {
+    tag.addEventListener('mouseenter', function () {
         this.style.transform = 'translateY(-3px) scale(1.05)';
     });
-    
-    tag.addEventListener('mouseleave', function() {
+
+    tag.addEventListener('mouseleave', function () {
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
@@ -358,13 +359,13 @@ document.querySelectorAll('.skill-tag').forEach(tag => {
 function animateCounters() {
     const counters = document.querySelectorAll('.stat h3');
     const speed = 200; // The lower the slower
-    
+
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target') || parseInt(counter.textContent);
             const count = +counter.textContent.replace(/[^0-9]/g, '');
             const inc = target / speed;
-            
+
             if (count < target) {
                 counter.textContent = Math.ceil(count + inc) + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '');
                 setTimeout(updateCount, 1);
@@ -372,13 +373,13 @@ function animateCounters() {
                 counter.textContent = target + (counter.textContent.includes('+') ? '+' : '') + (counter.textContent.includes('%') ? '%' : '');
             }
         };
-        
+
         updateCount();
     });
 }
 
 // Initialize counter animation when stats section is visible
-const statsObserver = new IntersectionObserver(function(entries) {
+const statsObserver = new IntersectionObserver(function (entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             animateCounters();
@@ -423,11 +424,11 @@ function createScrollToTop() {
         opacity: 0;
         transform: translateY(20px);
     `;
-    
+
     document.body.appendChild(scrollBtn);
-    
+
     // Show/hide scroll button
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 500) {
             scrollBtn.style.opacity = '1';
             scrollBtn.style.transform = 'translateY(0)';
@@ -436,22 +437,22 @@ function createScrollToTop() {
             scrollBtn.style.transform = 'translateY(20px)';
         }
     });
-    
+
     // Scroll to top on click
-    scrollBtn.addEventListener('click', function() {
+    scrollBtn.addEventListener('click', function () {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
-    
+
     // Hover effects
-    scrollBtn.addEventListener('mouseenter', function() {
+    scrollBtn.addEventListener('mouseenter', function () {
         this.style.background = '#3730a3';
         this.style.transform = 'translateY(-3px)';
     });
-    
-    scrollBtn.addEventListener('mouseleave', function() {
+
+    scrollBtn.addEventListener('mouseleave', function () {
         this.style.background = '#4f46e5';
         this.style.transform = 'translateY(0)';
     });
@@ -464,7 +465,7 @@ createScrollToTop();
 function createParticleEffect() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
-    
+
     const canvas = document.createElement('canvas');
     canvas.style.position = 'absolute';
     canvas.style.top = '0';
@@ -473,17 +474,17 @@ function createParticleEffect() {
     canvas.style.height = '100%';
     canvas.style.pointerEvents = 'none';
     canvas.style.zIndex = '1';
-    
+
     hero.appendChild(canvas);
-    
+
     const ctx = canvas.getContext('2d');
     let particles = [];
-    
+
     function resizeCanvas() {
         canvas.width = hero.offsetWidth;
         canvas.height = hero.offsetHeight;
     }
-    
+
     function createParticle() {
         return {
             x: Math.random() * canvas.width,
@@ -494,27 +495,27 @@ function createParticleEffect() {
             opacity: Math.random() * 0.5 + 0.2
         };
     }
-    
+
     function initParticles() {
         particles = [];
         for (let i = 0; i < 50; i++) {
             particles.push(createParticle());
         }
     }
-    
+
     function updateParticles() {
         particles.forEach(particle => {
             particle.x += particle.vx;
             particle.y += particle.vy;
-            
+
             if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
             if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
         });
     }
-    
+
     function drawParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         particles.forEach(particle => {
             ctx.beginPath();
             ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
@@ -522,17 +523,17 @@ function createParticleEffect() {
             ctx.fill();
         });
     }
-    
+
     function animate() {
         updateParticles();
         drawParticles();
         requestAnimationFrame(animate);
     }
-    
+
     resizeCanvas();
     initParticles();
     animate();
-    
+
     window.addEventListener('resize', () => {
         resizeCanvas();
         initParticles();
@@ -564,29 +565,35 @@ window.addEventListener('scroll', debouncedScrollHandler);
 
 
 // Lightbox functionality
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const designCards = document.querySelectorAll('.design-card');
-        const closeBtn = document.querySelector('.lightbox-close');
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const clickableCards = document.querySelectorAll('.design-card, .social-card, .media-card');
+    const closeBtn = document.querySelector('.lightbox-close');
 
-        designCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const fullSrc = card.getAttribute('data-full-img');
-                const caption = card.getAttribute('data-caption');
-                
+    if (!lightbox || !closeBtn) return;
+
+    clickableCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const fullSrc = card.getAttribute('data-full-img');
+            const caption = card.getAttribute('data-caption');
+
+            if (fullSrc) {
                 lightboxImg.src = fullSrc;
-                lightboxCaption.textContent = caption;
+                lightboxCaption.textContent = caption || '';
                 lightbox.style.display = 'flex';
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.style.display = 'none';
             }
         });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
+    });
+}

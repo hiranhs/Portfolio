@@ -1822,6 +1822,7 @@ section {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .card-youtube {
@@ -1846,8 +1847,110 @@ section {
     transform: none;
 }
 
-.social-cards-container:hover .card-tiktok {
-    transform: none;
+/* ... previous styles ... */
+
+/* MEDIA FEATURES SECTION */
+.media-features {
+    padding: 100px 0;
+    background-color: var(--background-dark);
+    position: relative;
+}
+
+.media-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.media-text {
+    text-align: left;
+}
+
+.media-description {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.media-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.media-card {
+    position: relative;
+    width: 250px;
+    height: 180px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.media-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+    border-color: var(--primary-color);
+}
+
+.media-card:hover img {
+    transform: scale(1.05);
+}
+
+.media-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.media-overlay i {
+    color: white;
+    font-size: 2rem;
+}
+
+.media-card:hover .media-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .media-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .media-text {
+        text-align: center;
+    }
+
+    .media-card {
+        width: 300px;
+        height: 220px;
+    }
 }
 
 .creative-img {
