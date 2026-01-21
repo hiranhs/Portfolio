@@ -338,7 +338,7 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    transform: translateY(-12px);
+    transform: none;
     transition: transform 0.3s ease;
     image-rendering: auto;
     -webkit-backface-visibility: hidden;
@@ -346,7 +346,7 @@ body {
 }
 
 .profile-img-container:hover .profile-img {
-    transform: translateY(-12px) scale(1.05);
+    transform: scale(1.05);
 }
 
 
