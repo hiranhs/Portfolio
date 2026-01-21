@@ -7,6 +7,9 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll globally */
+    width: 100%;
 }
 
 body {
@@ -14,6 +17,8 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    /* Double safety */
+    width: 100%;
 }
 
 .container {
