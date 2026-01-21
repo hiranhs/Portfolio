@@ -1793,26 +1793,28 @@ section {
 }
 
 
-/* Image Side - Dual Cards */
+/* Image Side - Vertical Stack */
 .creative-image-wrapper {
     position: relative;
-    perspective: 1000px;
-    height: 400px;
-    /* Specific height to contain absolute cards */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 0;
 }
 
 .social-cards-container {
     position: relative;
-    width: 300px;
-    height: 400px;
-    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Ensure they wrap on small screens */
+    justify-content: center;
 }
 
 .social-card {
-    position: absolute;
+    position: relative;
     width: 280px;
     height: 380px;
     border-radius: 20px;
@@ -1823,30 +1825,29 @@ section {
 }
 
 .card-youtube {
-    top: 0;
-    left: -40px;
-    transform: rotateY(-15deg) rotateZ(-5deg) translateZ(0px);
+    transform: none;
     z-index: 1;
     border: 2px solid rgba(255, 0, 0, 0.3);
 }
 
 .card-tiktok {
-    top: 40px;
-    right: -40px;
-    transform: rotateY(15deg) rotateZ(5deg) translateZ(20px);
-    z-index: 2;
+    transform: none;
+    z-index: 1;
     border: 2px solid rgba(0, 242, 234, 0.3);
 }
 
-/* Hover Effects */
+/* Hover Effects - Simple Scale */
+.social-card:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
 .social-cards-container:hover .card-youtube {
-    transform: rotateY(-5deg) rotateZ(-2deg) translateZ(50px) translateX(-60px);
-    z-index: 3;
-    /* Brings to front on some interaction or just spread out */
+    transform: none;
 }
 
 .social-cards-container:hover .card-tiktok {
-    transform: rotateY(5deg) rotateZ(2deg) translateZ(50px) translateX(60px);
+    transform: none;
 }
 
 .creative-img {
