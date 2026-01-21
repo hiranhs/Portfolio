@@ -107,6 +107,19 @@ body {
     background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 100%);
     position: relative;
     overflow: hidden;
+    /* Keep hidden on desktop, override on mobile if needed */
+}
+
+@media (max-width: 768px) {
+    .hero {
+        overflow: visible;
+        /* Allow content to flow vertically on mobile */
+        height: auto;
+        min-height: 100vh;
+        padding-top: 100px;
+        /* Add padding for fixed navbar */
+        padding-bottom: 50px;
+    }
 }
 
 .hero::before {
@@ -1369,11 +1382,14 @@ section {
         margin: 1rem 0;
     }
 
-    .hero-text-container {
-        /* Use the class name for the wrapper around your title/subtitle/description */
+    .hero-text {
+        /* Corrected from .hero-text-container */
         max-width: 100%;
         margin: 0 auto;
+        text-align: center;
         /* Center it */
+        color: white;
+        /* Ensure text is white and not faded */
     }
 
     .hero-subtitle {
@@ -1861,6 +1877,8 @@ section {
     padding: 100px 0;
     background-color: var(--background-dark);
     position: relative;
+    overflow: hidden;
+    /* Prevent horizontal scroll */
 }
 
 .media-content {
@@ -1980,7 +1998,12 @@ section {
     }
 
     .media-card {
-        width: 300px;
+        width: 100%;
+        /* Flexible width */
+        max-width: 300px;
+        /* Max constraint */
+        margin: 0 auto;
+        /* Center card */
     }
 
     .media-img-wrapper {
