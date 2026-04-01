@@ -34,7 +34,8 @@ portfolio/
 - Professional image
 
 ### 3. Projects Section
-- Three featured projects from your CV:
+- Featured projects from your professional work:
+  - Escape Room (Unity 3D Horror Mystery)
   - School DBMS Mobile App
   - LostLK Mobile Application
   - Fenshi Clothing E-Commerce Website

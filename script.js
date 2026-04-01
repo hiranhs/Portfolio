@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initLoadingScreen();
     initLightbox();
-    // initTypingEffect(); // Disabled to prevent form interference
+    initTypingEffect();
 });
 
 // Navigation functionality
@@ -136,67 +136,27 @@ function initSkillBars() {
     });
 }
 
-// Contact form functionality with EmailJS
+// Contact form functionality - Using Web3Forms direct submission
 function initContactForm() {
-    // Initialize EmailJS with your public key
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-
     const form = document.getElementById('contact-form');
+    if (!form) return;
 
-    if (form) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = new FormData(form);
-            const name = formData.get('from_name');
-            const email = formData.get('from_email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields', 'error');
-                return;
+    form.addEventListener('submit', function (e) {
+        // Let the form submit naturally to Web3Forms since it's already configured in HTML
+        // But we add a nice loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.style.opacity = '0.7';
+        
+        // After 1 second, we assume the browser will redirect or handle it
+        setTimeout(() => {
+            if (submitBtn) {
+                submitBtn.textContent = originalText;
+                submitBtn.style.opacity = '1';
             }
-
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
-                return;
-            }
-
-            // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // EmailJS template parameters
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                to_email: 'tharindu2003hs@gmail.com' // Your email address
-            };
-
-            // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function (response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-                    form.reset();
-                }, function (error) {
-                    console.log('FAILED...', error);
-                    showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
-                })
-                .finally(() => {
-                    // Reset button state
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
-        });
-    }
+        }, 3000);
+    });
 }
 
 // Email validation
