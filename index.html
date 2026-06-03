@@ -576,105 +576,50 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-content">
-                <div class="skills-categories">
-                    <div class="skill-category">
-                        <h3>Frontend Development</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">HTML</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
+            <div class="skills-content" style="grid-template-columns: 1fr;">
+                <div class="skills-categories" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; flex-direction: unset;">
+                    
+                    <div class="skill-category" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 1.5rem;">Frontend Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
                         </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Mobile Development</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">Kotlin</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Java</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Unity / C#</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Android Studio</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
+                    <div class="skill-category" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 1.5rem;">Mobile & Game Dev</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Kotlin</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Unity / C#</span>
+                            <span class="skill-tag">Android Studio</span>
                         </div>
                     </div>
 
-                    <div class="skill-category">
-                        <h3>Design & Tools</h3>
-                        <div class="skill-items">
-                            <div class="skill-item">
-                                <span class="skill-name">Figma</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Adobe XD</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="80%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Wireframing</span>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" data-width="85%"></div>
-                                </div>
-                            </div>
+                    <div class="skill-category" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 1.5rem;">Design & UX</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe XD</span>
+                            <span class="skill-tag">Wireframing</span>
+                            <span class="skill-tag">Prototyping</span>
+                            <span class="skill-tag">User Testing</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="skills-showcase">
-                    <div class="skill-tags">
-                        <span class="skill-tag">Adobe XD</span>
-                        <span class="skill-tag">Figma</span>
-                        <span class="skill-tag">Wireframing</span>
-                        <span class="skill-tag">User Testing</span>
-                        <span class="skill-tag">Prototyping</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">Kotlin</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Firebase</span>
-                        <span class="skill-tag">Google Maps</span>
-                        <span class="skill-tag">Room Database</span>
-                        <span class="skill-tag">ML Kit</span>
+                    <div class="skill-category" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <h3 style="color: #fff; font-size: 1.3rem; margin-bottom: 1.5rem;">Backend & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Firebase</span>
+                            <span class="skill-tag">Room Database</span>
+                            <span class="skill-tag">Google Maps API</span>
+                            <span class="skill-tag">ML Kit</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
