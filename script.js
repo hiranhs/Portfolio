@@ -136,26 +136,33 @@ function initSkillBars() {
     });
 }
 
-// Contact form functionality - Using Web3Forms direct submission
+// Contact form functionality - Using EmailJS
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
+    // Initialize EmailJS with Public Key
+    emailjs.init("VEFVGP_l0Wl9s5mbg");
+
     form.addEventListener('submit', function (e) {
-        // Let the form submit naturally to Web3Forms since it's already configured in HTML
-        // But we add a nice loading state
+        e.preventDefault();
+        
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending...';
         submitBtn.style.opacity = '0.7';
         
-        // After 1 second, we assume the browser will redirect or handle it
-        setTimeout(() => {
-            if (submitBtn) {
+        emailjs.sendForm('service_1yki0ch', 'template_iq10u1h', this)
+            .then(function() {
+                showNotification('Message sent successfully!', 'success');
+                form.reset();
+            }, function(error) {
+                showNotification('Failed to send message. Please try again.', 'error');
+                console.error('EmailJS error:', error);
+            }).finally(function() {
                 submitBtn.textContent = originalText;
                 submitBtn.style.opacity = '1';
-            }
-        }, 3000);
+            });
     });
 }
 
